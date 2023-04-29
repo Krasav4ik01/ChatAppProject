@@ -48,6 +48,7 @@ class Register : AppCompatActivity() {
                     addUserToDatabase(name, email, firebaseAuth.currentUser?.uid!!)
 //                    // Sign in success, update UI with the signed-in user's information
                     val intent = Intent(this@Register, MainActivity::class.java)
+                    finish()
                     startActivity(intent)
                 } else {
                     // If sign in fails, display a message to the user.
