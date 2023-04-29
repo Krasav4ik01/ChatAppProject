@@ -7,6 +7,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 class Register : AppCompatActivity() {
 
@@ -17,6 +19,8 @@ class Register : AppCompatActivity() {
     private lateinit var btnRegister: Button
 
     private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var dbRef: DatabaseReference
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
@@ -41,6 +45,7 @@ class Register : AppCompatActivity() {
         firebaseAuth.createUserWithEmailAndPassword(email, pass)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
+                    addUserToDatabase(name, email, firebaseAuth.currentUser?.uid!!)
 //                    // Sign in success, update UI with the signed-in user's information
                     val intent = Intent(this@Register, MainActivity::class.java)
                     startActivity(intent)
@@ -49,5 +54,10 @@ class Register : AppCompatActivity() {
                     Toast.makeText(this@Register, "Error with registration", Toast.LENGTH_SHORT).show()
                 }
             }
+    }
+
+    private fun addUserToDatabase(name: String, email: String, uid: String) {
+        dbRef = FirebaseDatabase.getInstance().getReference()
+        dbRef.child("user").child(uid).setValue(User(name, email, uid))
     }
 }
