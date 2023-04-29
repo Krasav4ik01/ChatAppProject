@@ -37,7 +37,7 @@ class Register : AppCompatActivity() {
             register(name,email,pass)
         }
     }
-    private fun register(email:String, pass:String){
+    private fun register(name:String, email:String, pass:String){
         firebaseAuth.createUserWithEmailAndPassword(email, pass)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
