@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ChatActivity">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/chatRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_above="@id/linearLayout"/>
+
+
+
+
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/linearLayout"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:weightSum="100"-->
+
+<!--        android:orientation="horizontal">-->
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_toLeftOf="@id/btnSend">
+
+            <EditText
+                android:id="@+id/messageField"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Enter message..."
+                android:background="@drawable/message_background"
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+        </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnSend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:backgroundTint="#6750A4"
+        android:clickable="true"
+        android:minHeight="48dp"
+        android:src="@drawable/ic_send_btn"
+        android:tint="@color/white"
+        app:fabSize="normal"
+        tools:ignore="SpeakableTextPresentCheck">
+
+    </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+<!--    </LinearLayout>-->
+
+</RelativeLayout>
